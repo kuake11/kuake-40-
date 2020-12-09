@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+	<style>
+		#hitokoto{
+			color: #FAFAD2;
+			text-align: center;
+			text-decoration-style: double;
+			font-size: 50px;
+			
+		}
+		#hito{
+			color: aliceblue;
+			text-align: right;
+			font-size: 50px;
+		}
+
+	</style>
+<meta charset="utf-8">
+<title>无标题文档</title>
+	</head>
+
+<body bgcolor="black">
+<p id="hitokoto"> 获取中...</p>
+	<p id="hito">--<span id="hito2">作者</span></p>
+
+<script>
+  fetch('https://v1.hitokoto.cn')
+    .then(response => response.json())
+    .then(data => {
+      const hitokoto = document.getElementById('hitokoto')
+	   const hito2 = document.getElementById('hito2')
+     
+      hitokoto.innerText = data.hitokoto
+	  hito2.href = 'https://hitokoto.cn/?from' + data.from
+	  hito2.innerText = data.from
+	  
+	 
+	 
+    })
+	.then(data=>{
+	  
+  })
+    .catch(console.error)
+</script>
+	
+</body>
+</html>
